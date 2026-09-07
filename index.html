@@ -1,500 +1,334 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulazione Quiz Lepida - Operatore di Sportello</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Quiz Dinamico Lepida - GitHub Hosted</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
-        .option-btn {
-            transition: all 0.2s ease-in-out;
-        }
-        .option-btn:hover:not(:disabled) {
-            transform: translateX(5px);
-        }
-        .selected {
-            border-color: #3b82f6 !important;
-            background-color: #eff6ff !important;
-        }
-        .correct-answer {
-            background-color: #dcfce3 !important;
-            border-color: #22c55e !important;
-        }
-        .wrong-answer {
-            background-color: #fee2e2 !important;
-            border-color: #ef4444 !important;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col">
 
-    <!-- Header -->
-    <header class="bg-blue-600 text-white shadow-md py-4">
-        <div class="max-w-4xl mx-auto px-4 flex justify-between items-center">
-            <h1 class="text-xl font-bold">Simulazione Lepida ScpA</h1>
-            <div id="timer-display" class="hidden font-mono bg-blue-800 px-3 py-1 rounded text-lg">
-                30:00
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <header class="bg-blue-900 text-white shadow-md">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold tracking-wide">LEPIDA SELEZIONE DINAMICA</h1>
+                <p class="text-xs text-blue-200">Piattaforma collegata a database JSON esterno</p>
             </div>
+            <button onclick="showHome()"
+                class="text-xs bg-blue-800 hover:bg-blue-700 px-3 py-1.5 rounded transition text-blue-100 font-medium border border-blue-700">🏠
+                Home</button>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="flex-grow flex items-center justify-center p-4">
-        <div id="app-container" class="bg-white rounded-xl shadow-lg w-full max-w-4xl p-6 md:p-8">
-            
-            <!-- Welcome Screen -->
-            <div id="welcome-screen" class="text-center">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Preparazione Selezione V01/V02</h2>
-                <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
-                    Questo quiz interattivo è basato sull'analisi dei test ufficiali (2021-2025) per il ruolo di 
-                    <strong>Operatore di Sportello e Contact Center Socio-Sanitario</strong>. 
-                    Il test simula le domande su GDPR, SPID, Google Workspace, Informatica e Inglese.
-                </p>
-                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-8 text-left max-w-xl mx-auto rounded">
-                    <ul class="list-disc ml-5 text-sm text-gray-700 space-y-1">
-                        <li><strong>Domande:</strong> 15 (selezionate casualmente)</li>
-                        <li><strong>Tempo limite:</strong> 30 minuti</li>
-                        <li><strong>Formato:</strong> Scelta multipla, una sola risposta esatta</li>
-                    </ul>
+    <main class="max-w-3xl w-full mx-auto px-4 py-8 flex-grow">
+        <!-- HOME SCREEN -->
+        <div id="home-screen" class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-8 space-y-6">
+            <div>
+                <h2 class="text-2xl font-bold text-slate-900">Simulatore Dinamico</h2>
+                <p class="text-sm text-slate-600 mt-1" id="db-status">Caricamento database domande in corso...</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div class="space-y-2">
+                    <label class="block text-sm font-medium text-slate-700">Tipologia di Prova</label>
+                    <select id="select-prova"
+                        class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <option value="all">Misto (Tutte le prove V01 + V02)</option>
+                        <option value="v01">Prova V01 (Tecnico - Normativa - ICT)</option>
+                        <option value="v02">Prova V02 (Inglese B1-B2)</option>
+                    </select>
                 </div>
-                <button onclick="startQuiz()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-md transition duration-300 text-lg">
-                    Inizia la Simulazione
+                <div class="space-y-2">
+                    <label class="block text-sm font-medium text-slate-700">Filtra per Argomento</label>
+                    <select id="select-topic"
+                        class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <option value="all">Tutti gli argomenti</option>
+                        <option value="gdpr">GDPR e Privacy</option>
+                        <option value="spid">SPID e Identità Digitale</option>
+                        <option value="ict">Hardware, Software e Reti</option>
+                        <option value="sanita">CUP e Servizi Sanitari</option>
+                        <option value="english">Inglese</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="pt-4 flex flex-col sm:flex-row gap-3">
+                <button id="btn-start" onclick="startQuiz()" disabled
+                    class="w-full bg-slate-300 text-slate-500 font-semibold py-3 px-6 rounded-lg transition duration-150 flex items-center justify-center gap-2 cursor-not-allowed">
+                    <span>Attendere caricamento dati...</span>
+                </button>
+                <button onclick="showStats()"
+                    class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-3 px-6 rounded-lg transition duration-150 flex items-center justify-center gap-2 border border-slate-300">
+                    <span>📊 I miei progressi (Storico)</span>
                 </button>
             </div>
+        </div>
 
-            <!-- Quiz Screen -->
-            <div id="quiz-screen" class="hidden">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="text-sm font-semibold text-gray-500 uppercase tracking-wider" id="question-category">Categoria</span>
-                    <span class="text-sm font-bold bg-gray-200 px-3 py-1 rounded-full text-gray-700" id="question-counter">1 / 15</span>
+        <!-- QUIZ SCREEN -->
+        <div id="quiz-screen" class="hidden bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-8 space-y-6">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-4">
+                <div>
+                    <span id="quiz-progress-text"
+                        class="text-xs font-semibold text-blue-600 uppercase tracking-wider">Domanda 1 di 10</span>
+                    <h3 id="quiz-topic-badge" class="text-sm font-medium text-slate-500">Argomento</h3>
                 </div>
-                
-                <h3 class="text-xl md:text-2xl font-semibold text-gray-800 mb-6 leading-relaxed" id="question-text">
-                    Testo della domanda...
-                </h3>
-
-                <div id="options-container" class="space-y-3 mb-8">
-                    <!-- Options injected via JS -->
-                </div>
-
-                <div class="flex justify-end">
-                    <button id="next-btn" onclick="nextQuestion()" disabled class="bg-gray-300 text-gray-500 font-bold py-2 px-6 rounded shadow cursor-not-allowed transition duration-300">
-                        Prossima Domanda
-                    </button>
+                <div
+                    class="flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-800 px-3 py-1 rounded-full text-xs font-semibold">
+                    ⏱️ <span id="timer">30:00</span>
                 </div>
             </div>
-
-            <!-- Results Screen -->
-            <div id="results-screen" class="hidden">
-                <div class="text-center mb-8">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Risultati Simulazione</h2>
-                    <p class="text-gray-600">Hai completato il test!</p>
-                </div>
-
-                <div class="flex justify-center mb-8">
-                    <div class="bg-blue-50 border-2 border-blue-200 rounded-full h-40 w-40 flex flex-col items-center justify-center shadow-inner">
-                        <span class="text-4xl font-bold text-blue-600" id="score-display">0%</span>
-                        <span class="text-sm text-gray-500 mt-1" id="score-details">0 / 15</span>
-                    </div>
-                </div>
-
-                <div id="feedback-message" class="text-center mb-8 font-medium text-lg"></div>
-
-                <div class="mb-8">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4 border-b pb-2">Dettaglio Risposte</h3>
-                    <div id="answers-review" class="space-y-4">
-                        <!-- Review items injected via JS -->
-                    </div>
-                </div>
-
-                <div class="text-center">
-                    <button onclick="location.reload()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-md transition duration-300">
-                        Ripeti il Quiz
-                    </button>
-                </div>
+            <div class="space-y-3">
+                <h4 id="question-text" class="text-lg font-semibold text-slate-900 leading-snug"></h4>
             </div>
+            <div id="options-container" class="space-y-3"></div>
+            <div class="flex justify-between items-center pt-6 border-t border-slate-100">
+                <button onclick="prevQuestion()" id="btn-prev"
+                    class="px-4 py-2 border border-slate-300 text-slate-600 rounded-lg text-sm font-medium hover:bg-slate-50 transition disabled:opacity-50">Precedente</button>
+                <button onclick="nextQuestion()" id="btn-next"
+                    class="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium shadow transition">Prossima</button>
+            </div>
+        </div>
 
+        <!-- RESULT SCREEN -->
+        <div id="result-screen"
+            class="hidden bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-8 space-y-6">
+            <div class="text-center space-y-2">
+                <h3 class="text-2xl font-bold text-slate-900">Test Completato!</h3>
+                <p class="text-sm text-slate-600">Risultati registrati correttamente nel browser.</p>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4 border-y border-slate-100 text-center">
+                <div class="bg-slate-50 p-3 rounded-lg"><span class="block text-xs text-slate-500">Punteggio</span><span
+                        id="res-score-pct" class="text-xl font-bold text-blue-600">0%</span></div>
+                <div class="bg-slate-50 p-3 rounded-lg"><span class="block text-xs text-slate-500">Corrette</span><span
+                        id="res-correct" class="text-xl font-bold text-emerald-600">0</span></div>
+                <div class="bg-slate-50 p-3 rounded-lg"><span class="block text-xs text-slate-500">Errate</span><span
+                        id="res-incorrect" class="text-xl font-bold text-rose-600">0</span></div>
+                <div class="bg-slate-50 p-3 rounded-lg"><span class="block text-xs text-slate-500">Tempo</span><span
+                        id="res-time" class="text-xl font-bold text-slate-700">00:00</span></div>
+            </div>
+            <div id="review-container" class="space-y-4 max-h-96 overflow-y-auto pr-2"></div>
+            <div class="pt-4 flex gap-3">
+                <button onclick="showHome()"
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow transition">Torna
+                    alla Home</button>
+                <button onclick="showStats()"
+                    class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-3 px-6 rounded-lg transition border border-slate-300">Visualizza
+                    Storico</button>
+            </div>
+        </div>
+
+        <!-- STATS SCREEN -->
+        <div id="stats-screen"
+            class="hidden bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-8 space-y-6">
+            <div class="flex justify-between items-center">
+                <h3 class="text-xl font-bold text-slate-900">📊 Storico Sessioni</h3>
+                <button onclick="clearHistory()" class="text-xs text-rose-600 underline font-medium">Cancella
+                    Storico</button>
+            </div>
+            <div id="stats-summary-box" class="grid grid-cols-1 sm:grid-cols-3 gap-4"></div>
+            <div id="history-list-container" class="space-y-2 max-h-72 overflow-y-auto"></div>
+            <button onclick="showHome()"
+                class="w-full bg-slate-800 text-white font-semibold py-2.5 rounded-lg text-sm">Torna alla Home</button>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white text-center py-4 text-sm mt-auto">
-        <p>Generato per la preparazione al concorso Lepida ScpA. Non ufficiale.</p>
-    </footer>
-
     <script>
-        // Database delle domande basato sul file ANALISI_LEPIDA_COMPLETE.md
-        const allQuestions = [
-            {
-                category: "GDPR e Privacy",
-                text: "Cosa si intende per 'dato personale' a norma del GDPR?",
-                options: [
-                    "Qualsiasi informazione riguardante una persona fisica identificata o identificabile.",
-                    "Qualunque informazione riguardante una persona fisica O GIURIDICA identificata o identificabile.",
-                    "Qualunque informazione riguardante una persona GIURIDICA identificata o identificabile.",
-                    "Un dato pubblico noto a tutti di un soggetto pubblico."
-                ],
-                correct: 0,
-                explanation: "Il GDPR si applica solo ai dati delle persone fisiche (interessati). L'aggiunta di 'persona giuridica' è un tipico distrattore."
-            },
-            {
-                category: "GDPR e Privacy",
-                text: "Nel trattamento dei dati personali, il far conoscere i dati a soggetti indeterminati attiene:",
-                options: [
-                    "All'utilizzo dei dati.",
-                    "Alla conservazione dei dati.",
-                    "Alla diffusione dei dati.",
-                    "Alla comunicazione dei dati."
-                ],
-                correct: 2,
-                explanation: "La 'diffusione' si riferisce specificamente al rendere i dati accessibili a soggetti indeterminati (es. pubblicazione web). La 'comunicazione' è verso soggetti determinati."
-            },
-            {
-                category: "Identità Digitale (SPID)",
-                text: "Cos'è SPID?",
-                options: [
-                    "Il Sistema Pubblico di Identità Digitale.",
-                    "Un sistema per pagare le tasse online.",
-                    "Un servizio di posta elettronica certificata.",
-                    "Il portale per prenotare visite mediche."
-                ],
-                correct: 0,
-                explanation: "SPID (Sistema Pubblico di Identità Digitale) permette ai cittadini di accedere ai servizi online della PA con un'unica identità."
-            },
-            {
-                category: "Informatica - Reti",
-                text: "Qual è la differenza principale tra uno SWITCH e un ROUTER?",
-                options: [
-                    "Non c'è differenza, sono sinonimi.",
-                    "Lo switch connette dispositivi all'interno della stessa rete (LAN), il router connette reti diverse.",
-                    "Il router serve solo per il Wi-Fi, lo switch solo per i cavi Ethernet.",
-                    "Lo switch connette reti diverse, il router dispositivi nella stessa rete."
-                ],
-                correct: 1,
-                explanation: "Lo switch opera a livello locale creando una rete, il router instrada i dati tra reti diverse (es. tra la rete locale e Internet)."
-            },
-            {
-                category: "Google Workspace",
-                text: "Quale tra i seguenti strumenti fa parte di Google Workspace, e per quale funzione?",
-                options: [
-                    "Google Meet, per videoconferenze e incontri virtuali.",
-                    "Google Sheets, per la creazione di documenti di testo.",
-                    "Skype, per comunicazioni via chat e videochiamate.",
-                    "Google Pictures, per il salvataggio delle immagini in cloud."
-                ],
-                correct: 0,
-                explanation: "Google Meet è lo strumento ufficiale di Workspace per le videoconferenze. Sheets è per i fogli di calcolo, non testi."
-            },
-            {
-                category: "Sanità - Prenotazioni",
-                text: "Quali prestazioni possono essere richieste al numero verde 800884888 del CUP di Bologna?",
-                options: [
-                    "Tutte le prestazioni prescritte tramite ricetta dematerializzata e ricetta manuale.",
-                    "Solo le prestazioni a pagamento (Libera Professione).",
-                    "Tutte le prestazioni prescritte tramite ricetta dematerializzata, ricetta manuale e parzialmente informatizzata.",
-                    "Esclusivamente visite per il rinnovo patente."
-                ],
-                correct: 2,
-                explanation: "Il Contact Center del CUP gestisce tutte le tipologie di ricettazione per le prestazioni del Servizio Sanitario Nazionale."
-            },
-            {
-                category: "Sicurezza Informatica",
-                text: "Qual è la definizione di Smishing?",
-                options: [
-                    "Invio massiccio e indiscriminato di messaggi di posta elettronica promozionali.",
-                    "Tipo di attacco che consiste nell'inviare SMS malevoli per portare gli utenti a rivelare informazioni sensibili.",
-                    "Un virus che cancella i dati dal disco fisso.",
-                    "Un sistema per proteggere le password aziendali."
-                ],
-                correct: 1,
-                explanation: "Lo Smishing è la variante del Phishing effettuata tramite messaggi di testo (SMS)."
-            },
-            {
-                category: "Amministrazione Digitale",
-                text: "Di cosa si occupa l'ANAC?",
-                options: [
-                    "Vigila sull'affidamento ed esecuzione dei contratti tra privati.",
-                    "Gestisce l'erogazione dei servizi sanitari.",
-                    "Sviluppa le reti in fibra ottica in Italia.",
-                    "Prevenire la corruzione, promuovere la trasparenza e la cultura della legalità."
-                ],
-                correct: 3,
-                explanation: "L'Autorità Nazionale Anticorruzione (ANAC) ha il compito primario di prevenire la corruzione nella PA e nelle società in controllo pubblico."
-            },
-            {
-                category: "Normativa Lepida",
-                text: "Cosa è una società 'IN-HOUSE'?",
-                options: [
-                    "Una pubblica Amministrazione pura.",
-                    "Una società di diritto privato che lavora come braccio operativo di Pubbliche Amministrazioni che detengono una partecipazione nella Società.",
-                    "Una società di diritto privato che svolge il 50% delle sue attività a favore di privati.",
-                    "Un'impresa straniera che opera sul territorio nazionale."
-                ],
-                correct: 1,
-                explanation: "Lepida è una società in house: giuridicamente privata ma soggetta al 'controllo analogo' degli enti pubblici soci, per i quali opera quasi in esclusiva."
-            },
-            {
-                category: "Fascicolo Sanitario Elettronico",
-                text: "Possono accedere al Fascicolo Sanitario Elettronico dell'Emilia-Romagna tutti i cittadini?",
-                options: [
-                    "Sì, tutti i cittadini italiani.",
-                    "No, solo i cittadini che hanno scelto il proprio medico di famiglia in una AUSL dell'Emilia-Romagna.",
-                    "No, solo i cittadini residenti anagraficamente in Emilia-Romagna, indipendentemente dal medico.",
-                    "Sì, ma solo recandosi fisicamente agli sportelli CUP."
-                ],
-                correct: 1,
-                explanation: "Il FSE regionale è legato all'assistenza sanitaria: è necessario avere il Medico di Medicina Generale o il Pediatra in Emilia-Romagna."
-            },
-            {
-                category: "Inglese (V02)",
-                text: "Complete the sentence: 'Please ___ your appointment at least 24 hours in advance.'",
-                options: [
-                    "confirm",
-                    "confirming",
-                    "cost",
-                    "to confirm"
-                ],
-                correct: 0,
-                explanation: "Dopo 'Please' (forma imperativa) serve la forma base del verbo: 'confirm'."
-            },
-            {
-                category: "Competenze Trasversali (V03)",
-                text: "Se una soluzione non sta funzionando durante l'assistenza a un utente, quale azione è più indicata?",
-                options: [
-                    "Insisto con la stessa soluzione, sperando che prima o poi funzioni.",
-                    "Abbandono il problema senza cercare ulteriori soluzioni.",
-                    "Trovo una giustificazione per mantenere la soluzione attuale per non ammettere l'errore.",
-                    "Rivedo la strategia e modifico l'approccio, considerando alternative."
-                ],
-                correct: 3,
-                explanation: "Lepida valuta positivamente il problem-solving adattivo e la capacità di revisione (Growth Mindset), non la rigidità o la giustificazione degli errori."
-            },
-            {
-                category: "Informatica Base",
-                text: "Che cosa è la formattazione di un disco?",
-                options: [
-                    "Una procedura per preparare il disco alla archiviazione dei dati generando una struttura di file system.",
-                    "Un processo per pulire lo schermo del computer.",
-                    "Una procedura per stampare documenti su carta speciale.",
-                    "Il metodo per comprimere i file in formato ZIP."
-                ],
-                correct: 0,
-                explanation: "La formattazione prepara il supporto di memorizzazione creando il file system necessario per scrivere e leggere i dati."
-            },
-            {
-                category: "Email e Comunicazione Digitale",
-                text: "A cosa serve il campo BCC (o CCN) in una email?",
-                options: [
-                    "A inviare una mail con allegati di grandi dimensioni.",
-                    "A inviare una mail a destinatari in copia visibile a tutti.",
-                    "A inviare una mail richiedendo la ricevuta di ritorno.",
-                    "A inviare una mail a uno o più destinatari senza che questi vedano l'indirizzo degli altri."
-                ],
-                correct: 3,
-                explanation: "BCC (Blind Carbon Copy) o CCN (Copia Conoscenza Nascosta) protegge la privacy degli indirizzi email dei destinatari."
-            },
-            {
-                category: "Costituzione e Diritto",
-                text: "La Costituzione italiana:",
-                options: [
-                    "È stata pubblicata sulla gazzetta ufficiale il 27 dicembre 1947.",
-                    "È stata approvata tramite referendum nel 1950.",
-                    "È stata promulgata nel 1861.",
-                    "Non contiene articoli dedicati al diritto alla salute."
-                ],
-                correct: 0,
-                explanation: "Approvata dall'Assemblea Costituente il 22 dicembre 1947, promulgata il 27 dicembre ed entrata in vigore il 1° gennaio 1948."
-            },
-            {
-                category: "Inglese (V02)",
-                text: "Choose the correct option: 'I'm sorry, but the doctor is ___ at that time.'",
-                options: [
-                    "unavailing",
-                    "unavailable",
-                    "unavailable for",
-                    "not availability"
-                ],
-                correct: 1,
-                explanation: "'Unavailable' (non disponibile) è l'aggettivo corretto per indicare che il dottore è occupato."
-            }
-        ];
+        let questionsDB = [];
+        let currentQuestions = [];
+        let currentIndex = 0;
+        let userAnswers = {};
+        let timerInterval = null;
+        let secondsElapsed = 0;
 
-        let quizQuestions = [];
-        let currentQuestionIndex = 0;
-        let score = 0;
-        let userAnswers = [];
-        let timeLeft = 30 * 60; // 30 minutes in seconds
-        let timerInterval;
+        // CARICAMENTO DINAMICO DEL JSON ESTERNO
+        async function loadQuestions() {
+            try {
+                const response = await fetch('questions.json');
+                if (!response.ok) throw new Error('Impossibile caricare il file JSON');
+                questionsDB = await response.json();
 
-        // Shuffle array helper
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
+                const btnStart = document.getElementById('btn-start');
+                btnStart.disabled = false;
+                btnStart.className = "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow transition duration-150 flex items-center justify-center gap-2 cursor-pointer";
+                btnStart.innerHTML = "<span>🚀 Inizia Simulazione</span>";
+
+                document.getElementById('db-status').innerText = `Database pronto: ${questionsDB.length} domande caricate dinamicamente da GitHub.`;
+            } catch (error) {
+                document.getElementById('db-status').innerText = "Errore nel caricamento delle domande. Assicurati che 'questions.json' sia nella stessa cartella.";
+                console.error(error);
             }
-            return array;
+        }
+
+        window.onload = loadQuestions;
+
+        function showScreen(screenId) {
+            ['home-screen', 'quiz-screen', 'result-screen', 'stats-screen'].forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+            });
+            document.getElementById(screenId).classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function showHome() {
+            clearInterval(timerInterval);
+            showScreen('home-screen');
         }
 
         function startQuiz() {
-            // Seleziona 15 domande casuali o tutte se sono meno di 15
-            quizQuestions = shuffleArray([...allQuestions]).slice(0, 15);
-            
-            document.getElementById('welcome-screen').classList.add('hidden');
-            document.getElementById('quiz-screen').classList.remove('hidden');
-            document.getElementById('timer-display').classList.remove('hidden');
-            
-            startTimer();
-            loadQuestion();
-        }
+            if (questionsDB.length === 0) {
+                alert("Database non ancora pronto.");
+                return;
+            }
+            const provaFilter = document.getElementById('select-prova').value;
+            const topicFilter = document.getElementById('select-topic').value;
 
-        function formatTime(seconds) {
-            const m = Math.floor(seconds / 60);
-            const s = seconds % 60;
-            return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+            currentQuestions = questionsDB.filter(q => {
+                let matchProva = (provaFilter === 'all' || q.prova === provaFilter);
+                let matchTopic = (topicFilter === 'all' || q.topic === topicFilter);
+                return matchProva && matchTopic;
+            });
+
+            if (currentQuestions.length === 0) {
+                alert("Nessuna domanda trovata con i filtri selezionati.");
+                return;
+            }
+
+            currentQuestions.sort(() => Math.random() - 0.5);
+            currentIndex = 0;
+            userAnswers = {};
+            secondsElapsed = 0;
+
+            showScreen('quiz-screen');
+            startTimer();
+            renderQuestion();
         }
 
         function startTimer() {
-            const timerDisplay = document.getElementById('timer-display');
+            clearInterval(timerInterval);
             timerInterval = setInterval(() => {
-                timeLeft--;
-                timerDisplay.textContent = formatTime(timeLeft);
-                
-                if (timeLeft <= 300) { // last 5 minutes
-                    timerDisplay.classList.remove('bg-blue-800');
-                    timerDisplay.classList.add('bg-red-600', 'animate-pulse');
-                }
-                
-                if (timeLeft <= 0) {
-                    clearInterval(timerInterval);
-                    finishQuiz();
-                }
+                secondsElapsed++;
+                let m = Math.floor(secondsElapsed / 60);
+                let s = secondsElapsed % 60;
+                document.getElementById('timer').innerText = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
             }, 1000);
         }
 
-        function loadQuestion() {
-            const nextBtn = document.getElementById('next-btn');
-            const q = quizQuestions[currentQuestionIndex];
-            
-            document.getElementById('question-counter').textContent = `${currentQuestionIndex + 1} / ${quizQuestions.length}`;
-            document.getElementById('question-category').textContent = q.category;
-            document.getElementById('question-text').textContent = q.text;
-            
-            const optionsContainer = document.getElementById('options-container');
-            optionsContainer.innerHTML = '';
-            
-            // Randomize options for the display, but keep track of the original correct index
-            const optionsWithOriginalIndices = q.options.map((opt, index) => ({ text: opt, originalIndex: index }));
-            shuffleArray(optionsWithOriginalIndices);
+        function renderQuestion() {
+            const q = currentQuestions[currentIndex];
+            document.getElementById('quiz-progress-text').innerText = `Domanda ${currentIndex + 1} di ${currentQuestions.length}`;
+            document.getElementById('quiz-topic-badge').innerText = `Categoria: ${q.topic.toUpperCase()} (${q.prova.toUpperCase()})`;
+            document.getElementById('question-text').innerText = q.text;
 
-            optionsWithOriginalIndices.forEach((optObj, displayIndex) => {
-                const btn = document.createElement('button');
-                btn.className = 'option-btn w-full text-left p-4 rounded-lg border-2 border-gray-200 bg-white text-gray-700 hover:border-blue-300 focus:outline-none';
-                
-                // Add the 4-letter code pattern typical of Lepida tests (e.g. KKLF - )
-                const randomCode = Math.random().toString(36).substring(2, 6).toUpperCase();
-                btn.innerHTML = `<span class="font-mono font-bold text-gray-500 mr-2">${randomCode} -</span> ${optObj.text}`;
-                
-                btn.onclick = () => selectOption(displayIndex, optObj.originalIndex, q.correct);
-                optionsContainer.appendChild(btn);
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
+
+            q.options.forEach((opt, idx) => {
+                let isSelected = userAnswers[currentIndex] === idx;
+                let btnClass = isSelected
+                    ? "border-blue-600 bg-blue-50 text-blue-900 ring-2 ring-blue-500"
+                    : "border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700";
+
+                container.innerHTML += `
+                    <button onclick="selectOption(${idx})" class="w-full text-left p-4 rounded-xl border transition flex items-start gap-3 ${btnClass}">
+                        <span class="font-mono text-xs font-bold px-2 py-1 bg-slate-200 rounded text-slate-700">${opt.code}</span>
+                        <span class="text-sm font-medium leading-relaxed">${opt.text}</span>
+                    </button>
+                `;
             });
 
-            nextBtn.disabled = true;
-            nextBtn.classList.add('bg-gray-300', 'text-gray-500', 'cursor-not-allowed');
-            nextBtn.classList.remove('bg-blue-600', 'text-white', 'hover:bg-blue-700');
-            
-            if (currentQuestionIndex === quizQuestions.length - 1) {
-                nextBtn.textContent = 'Termina Quiz';
-            }
+            document.getElementById('btn-prev').disabled = (currentIndex === 0);
+            const nextBtn = document.getElementById('btn-next');
+            nextBtn.innerText = (currentIndex === currentQuestions.length - 1) ? "Termina e Analizza" : "Prossima";
         }
 
-        let currentSelection = null;
-
-        function selectOption(displayIndex, originalIndex, correctIndex) {
-            const buttons = document.querySelectorAll('.option-btn');
-            buttons.forEach(btn => btn.classList.remove('selected'));
-            buttons[displayIndex].classList.add('selected');
-            
-            currentSelection = {
-                selectedIndex: originalIndex,
-                isCorrect: originalIndex === correctIndex
-            };
-
-            const nextBtn = document.getElementById('next-btn');
-            nextBtn.disabled = false;
-            nextBtn.classList.remove('bg-gray-300', 'text-gray-500', 'cursor-not-allowed');
-            nextBtn.classList.add('bg-blue-600', 'text-white', 'hover:bg-blue-700');
+        function selectOption(optIdx) {
+            userAnswers[currentIndex] = optIdx;
+            renderQuestion();
         }
 
-        function nextQuestion() {
-            if (currentSelection === null) return;
-
-            userAnswers.push({
-                question: quizQuestions[currentQuestionIndex],
-                isCorrect: currentSelection.isCorrect,
-                userAnswerIndex: currentSelection.selectedIndex
-            });
-
-            if (currentSelection.isCorrect) score++;
-
-            currentSelection = null;
-            currentQuestionIndex++;
-
-            if (currentQuestionIndex < quizQuestions.length) {
-                loadQuestion();
-            } else {
-                finishQuiz();
-            }
-        }
+        function prevQuestion() { if (currentIndex > 0) { currentIndex--; renderQuestion(); } }
+        function nextQuestion() { if (currentIndex < currentQuestions.length - 1) { currentIndex++; renderQuestion(); } else { finishQuiz(); } }
 
         function finishQuiz() {
             clearInterval(timerInterval);
-            document.getElementById('quiz-screen').classList.add('hidden');
-            document.getElementById('timer-display').classList.add('hidden');
-            const resultsScreen = document.getElementById('results-screen');
-            resultsScreen.classList.remove('hidden');
+            let correctCount = 0, incorrectCount = 0, reviewHTML = '';
 
-            const percentage = Math.round((score / quizQuestions.length) * 100);
-            document.getElementById('score-display').textContent = `${percentage}%`;
-            document.getElementById('score-details').textContent = `${score} / ${quizQuestions.length} Corrette`;
+            currentQuestions.forEach((q, idx) => {
+                let userOptIdx = userAnswers[idx];
+                let isCorrect = (userOptIdx !== undefined && q.options[userOptIdx].correct);
+                if (isCorrect) correctCount++; else incorrectCount++;
 
-            const feedbackMsg = document.getElementById('feedback-message');
-            if (percentage >= 80) {
-                feedbackMsg.innerHTML = '<span class="text-green-600">Eccellente! Ottima preparazione.</span>';
-            } else if (percentage >= 60) {
-                feedbackMsg.innerHTML = '<span class="text-yellow-600">Buono, ma puoi migliorare. Rivedi gli argomenti deboli.</span>';
-            } else {
-                feedbackMsg.innerHTML = '<span class="text-red-600">Insufficiente. Ti consigliamo di studiare approfonditamente i materiali ufficiali.</span>';
-            }
+                let correctOpt = q.options.find(o => o.correct);
+                let userOpt = userOptIdx !== undefined ? q.options[userOptIdx] : null;
 
-            // Populate Review
-            const reviewContainer = document.getElementById('answers-review');
-            userAnswers.forEach((ans, i) => {
-                const itemDiv = document.createElement('div');
-                itemDiv.className = `p-4 rounded-lg border-l-4 ${ans.isCorrect ? 'bg-green-50 border-green-500' : 'bg-red-50 border-red-500'}`;
-                
-                itemDiv.innerHTML = `
-                    <div class="mb-2">
-                        <span class="font-bold text-sm ${ans.isCorrect ? 'text-green-700' : 'text-red-700'}">Domanda ${i+1}:</span>
-                        <span class="text-gray-800 font-medium ml-2">${ans.question.text}</span>
-                    </div>
-                    <div class="text-sm mb-1">
-                        <span class="text-gray-600">La tua risposta:</span> 
-                        <span class="${ans.isCorrect ? 'text-green-700 font-semibold' : 'text-red-700 font-semibold line-through'}">
-                            ${ans.question.options[ans.userAnswerIndex] || 'Nessuna (Scadenza tempo)'}
-                        </span>
-                    </div>
-                    ${!ans.isCorrect ? `
-                    <div class="text-sm mb-2">
-                        <span class="text-gray-600">Risposta Corretta:</span> 
-                        <span class="text-green-700 font-semibold">${ans.question.options[ans.question.correct]}</span>
-                    </div>` : ''}
-                    <div class="mt-3 text-sm text-gray-700 bg-white p-3 rounded border">
-                        <strong>Spiegazione:</strong> ${ans.question.explanation}
+                reviewHTML += `
+                    <div class="p-4 rounded-xl border ${isCorrect ? 'border-emerald-200 bg-emerald-50/50' : 'border-rose-200 bg-rose-50/50'} space-y-2">
+                        <span class="text-xs font-bold uppercase tracking-wider ${isCorrect ? 'text-emerald-700' : 'text-rose-700'}">${isCorrect ? '✔ Corretta' : '✘ Errata'}</span>
+                        <p class="text-sm font-semibold text-slate-900">${q.text}</p>
+                        <div class="text-xs space-y-1">
+                            <p><strong>Tua risposta:</strong> ${userOpt ? userOpt.code + " - " + userOpt.text : 'Nessuna'}</p>
+                            ${!isCorrect ? `<p class="text-emerald-700"><strong>Corretta:</strong> ${correctOpt.code} - ${correctOpt.text}</p>` : ''}
+                            <p class="text-slate-500 italic">💡 ${q.explanation}</p>
+                        </div>
                     </div>
                 `;
-                reviewContainer.appendChild(itemDiv);
             });
+
+            let scorePct = Math.round((correctCount / currentQuestions.length) * 100);
+            document.getElementById('res-score-pct').innerText = `${scorePct}%`;
+            document.getElementById('res-correct').innerText = correctCount;
+            document.getElementById('res-incorrect').innerText = incorrectCount;
+            document.getElementById('res-time').innerText = `${Math.floor(secondsElapsed / 60)}:${(secondsElapsed % 60).toString().padStart(2, '0')}`;
+            document.getElementById('review-container').innerHTML = reviewHTML;
+
+            saveSessionToLocalStorage({ timestamp: new Date().toISOString(), total: currentQuestions.length, correct: correctCount, score_pct: scorePct });
+            showScreen('result-screen');
+        }
+
+        function saveSessionToLocalStorage(data) {
+            let history = JSON.parse(localStorage.getItem('lepida_dynamic_history') || '[]');
+            history.unshift(data);
+            localStorage.setItem('lepida_dynamic_history', JSON.stringify(history));
+        }
+
+        function showStats() {
+            let history = JSON.parse(localStorage.getItem('lepida_dynamic_history') || '[]');
+            const summaryBox = document.getElementById('stats-summary-box');
+            const historyList = document.getElementById('history-list-container');
+
+            if (history.length === 0) {
+                summaryBox.innerHTML = `<div class="col-span-3 text-center py-4 text-slate-400 text-sm">Nessuna sessione registrata.</div>`;
+                historyList.innerHTML = '';
+            } else {
+                let avg = Math.round(history.reduce((a, c) => a + c.score_pct, 0) / history.length);
+                summaryBox.innerHTML = `
+                    <div class="bg-slate-50 p-3 rounded-lg text-center"><span class="text-xs text-slate-500">Test Fatti</span><span class="text-xl font-bold">${history.length}</span></div>
+                    <div class="bg-slate-50 p-3 rounded-lg text-center"><span class="text-xs text-slate-500">Media</span><span class="text-xl font-bold text-blue-600">${avg}%</span></div>
+                    <div class="bg-slate-50 p-3 rounded-lg text-center"><span class="text-xs text-slate-500">Migliore</span><span class="text-xl font-bold text-emerald-600">${Math.max(...history.map(h => h.score_pct))}%</span></div>
+                `;
+                historyList.innerHTML = history.map((h, i) => `
+                    <div class="flex justify-between items-center p-2.5 bg-slate-50 rounded border text-sm">
+                        <span>Test #${history.length - i} (${new Date(h.timestamp).toLocaleDateString()})</span>
+                        <span class="font-bold px-2 py-0.5 rounded text-xs ${h.score_pct >= 75 ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">${h.score_pct}%</span>
+                    </div>
+                `).join('');
+            }
+            showScreen('stats-screen');
+        }
+
+        function clearHistory() {
+            if (confirm("Cancellare lo storico?")) { localStorage.removeItem('lepida_dynamic_history'); showStats(); }
         }
     </script>
 </body>
+
 </html>
