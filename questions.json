@@ -27,7 +27,7 @@
                 "correct": false
             }
         ],
-        "explanation": "SPID con LepidaID può essere rilasciato sia 'de visu' in presenza sia online tramite webcam o modalità digitali supportate[cite: 5]."
+        "explanation": "SPID con LepidaID può essere rilasciato sia 'de visu' in presenza sia online tramite webcam o modalità digitali supportate."
     },
     {
         "id": 2,
@@ -42,19 +42,22 @@
                 "correct": true
             },
             {
-                "code": "BRVX", text: "Identità digitali SPID ad uso personale per accedere ai servizi online di Pubbliche Amministrazioni",
+                "code": "BRVX",
+                "text": "Identità digitali SPID ad uso personale per accedere ai servizi online di Pubbliche Amministrazioni",
                 "correct": false
             },
             {
-                "code": "WHPK", text: "Identità digitali SPID ad uso personale ai soli cittadini residenti in Emilia Romagna",
+                "code": "WHPK",
+                "text": "Identità digitali SPID ad uso personale ai soli cittadini residenti in Emilia Romagna",
                 "correct": false
             },
             {
-                "code": "LJOU", text: "Identità digitali Agid",
+                "code": "LJOU",
+                "text": "Identità digitali Agid",
                 "correct": false
             }
         ],
-        "explanation": "Come identity provider accreditato AGID, Lepida rilascia identità SPID ad uso personale, professionale persona fisica e persona giuridica[cite: 8]."
+        "explanation": "Come identity provider accreditato AGID, Lepida rilascia identità SPID ad uso personale, professionale persona fisica e persona giuridica."
     },
     {
         "id": 3,
@@ -64,19 +67,23 @@
         "text": "Quale livello di sicurezza SPID è comunemente richiesto per accedere ai servizi online sanitari più sensibili?",
         "options": [
             {
-                "code": "AXTR", text: "Livello SPID 2 o Livello 3 a seconda dei requisiti normativi del servizio",
+                "code": "AXTR",
+                "text": "Livello SPID 2 o Livello 3 a seconda dei requisiti normativi del servizio",
                 "correct": true
             },
             {
-                "code": "BPLM", text: "Esclusivamente il livello 1 con sola password",
+                "code": "BPLM",
+                "text": "Esclusivamente il livello 1 con sola password",
                 "correct": false
             },
             {
-                "code": "CZKW", text: "Nessun livello di autenticazione specifica",
+                "code": "CZKW",
+                "text": "Nessun livello di autenticazione specifica",
                 "correct": false
             },
             {
-                "code": "DWQP", text: "Un livello inferiore allo SPID base",
+                "code": "DWQP",
+                "text": "Un livello inferiore allo SPID base",
                 "correct": false
             }
         ],
@@ -90,23 +97,27 @@
         "text": "Cosa è un 'LAPTOP'?",
         "options": [
             {
-                "code": "QKAC", text: "un computer portatile",
+                "code": "QKAC",
+                "text": "un computer portatile",
                 "correct": true
             },
             {
-                "code": "UOHN", text: "un tablet",
+                "code": "UOHN",
+                "text": "un tablet",
                 "correct": false
             },
             {
-                "code": "TWTN", text: "un dispositivo capace di comunicare solo in Bluetooth",
+                "code": "TWTN",
+                "text": "un dispositivo capace di comunicare solo in Bluetooth",
                 "correct": false
             },
             {
-                "code": "WKTC", text: "uno smartphone",
+                "code": "WKTC",
+                "text": "uno smartphone",
                 "correct": false
             }
         ],
-        "explanation": "Un laptop è per definizione un personal computer portatile pensato per la mobilità[cite: 5]."
+        "explanation": "Un laptop è per definizione un personal computer portatile pensato per la mobilità."
     },
     {
         "id": 5,
@@ -116,23 +127,27 @@
         "text": "Uno SWITCH è?",
         "options": [
             {
-                "code": "KMFL", text: "un dispositivo per connettere diversi segmenti di rete sezionando il traffico",
+                "code": "KMFL",
+                "text": "un dispositivo per connettere diversi segmenti di rete sezionando il traffico",
                 "correct": true
             },
             {
-                "code": "BCJJ", text: "una periferica di visualizzazione dello stato di funzionamento del laptop",
+                "code": "BCJJ",
+                "text": "una periferica di visualizzazione dello stato di funzionamento del laptop",
                 "correct": false
             },
             {
-                "code": "HCLG", text: "un dispositivo per connettere diversi segmenti di rete lasciando passare tutto il traffico",
+                "code": "HCLG",
+                "text": "un dispositivo per connettere diversi segmenti di rete lasciando passare tutto il traffico",
                 "correct": false
             },
             {
-                "code": "TPDZ", text: "un dispositivo per connettere diversi segmenti di rete per l'instradamento geografico",
+                "code": "TPDZ",
+                "text": "un dispositivo per connettere diversi segmenti di rete per l'instradamento geografico",
                 "correct": false
             }
         ],
-        "explanation": "Lo switch opera a livello 2 (Data Link) e gestisce il traffico di rete inoltrando i pacchetti in modo mirato[cite: 5]."
+        "explanation": "Lo switch opera a livello 2 (Data Link) e gestisce il traffico di rete inoltrando i pacchetti in modo mirato."
     },
     {
         "id": 6,
@@ -142,23 +157,27 @@
         "text": "Cos'è l'HARDWARE in informatica?",
         "options": [
             {
-                "code": "LZIH", text: "sono la tastiera e lo schermo",
+                "code": "LZIH",
+                "text": "sono la tastiera e lo schermo",
                 "correct": false
             },
             {
-                "code": "NYCJ", text: "sono le istruzioni per programmare il computer",
+                "code": "NYCJ",
+                "text": "sono le istruzioni per programmare il computer",
                 "correct": false
             },
             {
-                "code": "LDLW", text: "sono l'insieme delle componenti fisiche non modificabili di un computer",
+                "code": "LDLW",
+                "text": "sono l'insieme delle componenti fisiche non modificabili di un computer",
                 "correct": true
             },
             {
-                "code": "MZBR", text: "sono l'insieme delle componenti modificabili di un computer",
+                "code": "MZBR",
+                "text": "sono l'insieme delle componenti modificabili di un computer",
                 "correct": false
             }
         ],
-        "explanation": "L'hardware rappresenta l'architettura tangibile e fisica di un sistema di elaborazione[cite: 5]."
+        "explanation": "L'hardware rappresenta l'architettura tangibile e fisica di un sistema di elaborazione."
     },
     {
         "id": 7,
@@ -168,23 +187,27 @@
         "text": "Che cosa è un sistema operativo?",
         "options": [
             {
-                "code": "IBGC", text: "un software che gestisce le risorse software fornendo le risorse di base ai software applicativi",
+                "code": "IBGC",
+                "text": "un software che gestisce le risorse software fornendo le risorse di base ai software applicativi",
                 "correct": false
             },
             {
-                "code": "ZABP", text: "un software che gestisce le risorse hardware e software fornendo le risorse di base ai software applicativi",
+                "code": "ZABP",
+                "text": "un software che gestisce le risorse hardware e software fornendo le risorse di base ai software applicativi",
                 "correct": true
             },
             {
-                "code": "AIWL", text: "un software che gestisce le risorse hardware",
+                "code": "AIWL",
+                "text": "un software che gestisce le risorse hardware",
                 "correct": false
             },
             {
-                "code": "NNIZ", text: "un sistema hardware che orchestra le risorse",
+                "code": "NNIZ",
+                "text": "un sistema hardware che orchestra le risorse",
                 "correct": false
             }
         ],
-        "explanation": "Il sistema operativo gestisce e coordina l'hardware e fornisce la base per i software applicativi[cite: 6]."
+        "explanation": "Il sistema operativo gestisce e coordina l'hardware e fornisce la base per i software applicativi."
     },
     {
         "id": 8,
@@ -194,23 +217,27 @@
         "text": "Che cosa è un URL?",
         "options": [
             {
-                "code": "NFRL", text: "una stringa che identifica una directory sulla macchina locale",
+                "code": "NFRL",
+                "text": "una stringa che identifica una directory sulla macchina locale",
                 "correct": false
             },
             {
-                "code": "PKVY", text: "una stringa che identifica uno dei tanti possibili indirizzi di una specifica risorsa di rete",
+                "code": "PKVY",
+                "text": "una stringa che identifica uno dei tanti possibili indirizzi di una specifica risorsa di rete",
                 "correct": false
             },
             {
-                "code": "SDKZ", text: "una stringa che identifica l'indirizzo di una specifica risorsa informatica",
+                "code": "SDKZ",
+                "text": "una stringa che identifica l'indirizzo di una specifica risorsa informatica",
                 "correct": false
             },
             {
-                "code": "TEFX", text: "una stringa che identifica univocamente l'indirizzo di una specifica risorsa di rete",
+                "code": "TEFX",
+                "text": "una stringa che identifica univocamente l'indirizzo di una specifica risorsa di rete",
                 "correct": true
             }
         ],
-        "explanation": "L'URL (Uniform Resource Locator) è la stringa che identifica univocamente l'indirizzo di una risorsa di rete[cite: 6]."
+        "explanation": "L'URL (Uniform Resource Locator) è la stringa che identifica univocamente l'indirizzo di una risorsa di rete."
     },
     {
         "id": 9,
@@ -220,19 +247,23 @@
         "text": "Qual è la principale differenza funzionale tra un Router e uno Switch di rete?",
         "options": [
             {
-                "code": "RTPQ", text: "Il router instrada i pacchetti tra reti differenti, mentre lo switch collega dispositivi all'interno della stessa LAN",
+                "code": "RTPQ",
+                "text": "Il router instrada i pacchetti tra reti differenti, mentre lo switch collega dispositivi all'interno della stessa LAN",
                 "correct": true
             },
             {
-                "code": "MNTX", text: "Non vi è alcuna differenza tecnica tra i due dispositivi di rete",
+                "code": "MNTX",
+                "text": "Non vi è alcuna differenza tecnica tra i due dispositivi di rete",
                 "correct": false
             },
             {
-                "code": "JKLZ", text: "Lo switch gestisce la connessione wireless mentre il router gestisce solo cavi in fibra",
+                "code": "JKLZ",
+                "text": "Lo switch gestisce la connessione wireless mentre il router gestisce solo cavi in fibra",
                 "correct": false
             },
             {
-                "code": "WXYZ", text: "Il router serve solo a stampare in rete locale",
+                "code": "WXYZ",
+                "text": "Il router serve solo a stampare in rete locale",
                 "correct": false
             }
         ],
@@ -246,647 +277,26 @@
         "text": "Cosa si intende per 'dato personale' a norma del GDPR?",
         "options": [
             {
-                "code": "CJKQ", text: "qualsiasi informazione riguardante una persona fisica identificata o identificabile",
+                "code": "CJKQ",
+                "text": "qualsiasi informazione riguardante una persona fisica identificata o identificabile",
                 "correct": true
             },
             {
-                "code": "ZLBQ", text: "qualunque informazione riguardante una persona fisica o giuridica identificata o identificabile",
+                "code": "ZLBQ",
+                "text": "qualunque informazione riguardante una persona fisica o giuridica identificata o identificabile",
                 "correct": false
             },
             {
-                "code": "KVVS", text: "qualunque informazione riguardante una persona giuridica identificata",
+                "code": "KVVS",
+                "text": "qualunque informazione riguardante una persona giuridica identificata",
                 "correct": false
             },
             {
-                "code": "MTFX", text: "un dato pubblico noto a tutti di un soggetto pubblico",
-                "correct": false
-            }
-        ],
-        "explanation": "Il GDPR (Regolamento UE 2016/679) tutela esclusivamente le persone fisiche[cite: 5]."
-    },
-    {
-        "id": 11,
-        "prova": "v01",
-        "topic": "gdpr",
-        "difficulty": "media",
-        "text": "Nel trattamento dei dati personali il far conoscere i dati personali a soggetti indeterminati attiene:",
-        "options": [
-            {
-                "code": "LYZQ", text: "all'utilizzo dei dati",
-                "correct": false
-            },
-            {
-                "code": "JXOR", text: "alla diffusione dei dati",
-                "correct": true
-            },
-            {
-                "code": "HPVN", text: "alla conservazione dei dati",
-                "correct": false
-            },
-            {
-                "code": "WUSE", text: "alla comunicazione dei dati",
+                "code": "MTFX",
+                "text": "un dato pubblico noto a tutti di un soggetto pubblico",
                 "correct": false
             }
         ],
-        "explanation": "La diffusione consiste nel dare conoscenza di dati personali a soggetti indeterminati[cite: 6]."
-    },
-    {
-        "id": 12,
-        "prova": "v01",
-        "topic": "gdpr",
-        "difficulty": "media",
-        "text": "Quali dei seguenti possono essere considerati dati particolari (sensibili), in tema di privacy:",
-        "options": [
-            {
-                "code": "LJVK", text: "L'origine razziale o etnica; le opinioni politiche, le convinzioni religiose o filosofiche; l'appartenenza sindacale; i dati genetici e biometrici; i dati relativi alla salute o alla vita sessuale",
-                "correct": true
-            },
-            {
-                "code": "ZBSP", text: "L'origine razziale o etnica; le opinioni politiche, le convinzioni religiose; i dati aziendali; i dati relativi alla salute",
-                "correct": false
-            },
-            {
-                "code": "TLAE", text: "Tutti i dati relativi alla salute e l'origine razziale o etnica",
-                "correct": false
-            },
-            {
-                "code": "SNXY", text: "Soltanto i dati anagrafici",
-                "correct": false
-            }
-        ],
-        "explanation": "L'articolo 9 del GDPR elenca in modo tassativo le categorie particolari di dati personali[cite: 8]."
-    },
-    {
-        "id": 13,
-        "prova": "v01",
-        "topic": "gdpr",
-        "difficulty": "facile",
-        "text": "Ai sensi del Regolamento UE 2016/679 (GDPR), per 'trattamento' si intende:",
-        "options": [
-            {
-                "code": "DNJQ", text: "Qualsiasi operazione o insieme di operazioni, compiute con o senza l'ausilio di processi automatizzati e applicate a dati personali",
-                "correct": true
-            },
-            {
-                "code": "OUXO", text: "Un insieme di operazioni applicate a dati personali",
-                "correct": false
-            },
-            {
-                "code": "MSAH", text: "Qualsiasi forma di utilizzo di dati personali per analizzare determinati aspetti",
-                "correct": false
-            },
-            {
-                "code": "JWRI", text: "L'informativa fornita dal titolare del trattamento ai soggetti interessati",
-                "correct": false
-            }
-        ],
-        "explanation": "La definizione legale di trattamento include qualsiasi operazione eseguita sui dati personali[cite: 8]."
-    },
-    {
-        "id": 14,
-        "prova": "v01",
-        "topic": "gdpr",
-        "difficulty": "media",
-        "text": "Chi è il soggetto responsabile del rispetto dei principi del GDPR all'interno di un'organizzazione?",
-        "options": [
-            {
-                "code": "TCRV", text: "Il Titolare del trattamento (Data Controller)",
-                "correct": true
-            },
-            {
-                "code": "XMPL", text: "Esclusivamente l'utente finale",
-                "correct": false
-            },
-            {
-                "code": "YZZN", text: "Il fornitore di connettività internet",
-                "correct": false
-            },
-            {
-                "code": "ABCD", text: "Un qualsiasi dipendente senza deleghe",
-                "correct": false
-            }
-        ],
-        "explanation": "Il Titolare del trattamento determina finalità e mezzi del trattamento dei dati personali ed è il principale responsabile della conformità."
-    },
-    {
-        "id": 15,
-        "prova": "v01",
-        "topic": "sanita",
-        "difficulty": "media",
-        "text": "Quali prestazioni possono essere richieste al numero verde 800884888 del CUP di Bologna?",
-        "options": [
-            {
-                "code": "LJRD", text: "tutte le prestazione prescritte tramite ricetta dematerializzata e ricetta manuale",
-                "correct": true
-            },
-            {
-                "code": "LNLO", text: "tutte le prestazione prescritte tramite ricetta dematerializzata, ricetta manuale e parzialmente informatizzata",
-                "correct": false
-            },
-            {
-                "code": "RFDV", text: "tutte le prestazione prescritte tramite ricetta dematerializzata",
-                "correct": false
-            },
-            {
-                "code": "QVIJ", text: "la visita per rinnovo patente in Commissione", correct: false
-            }
-        ],
-        "explanation": "Il servizio telefonico del CUP gestisce le prenotazioni collegate alle prescrizioni mediche regolari[cite: 5]."
-    },
-    {
-        "id": 16,
-        "prova": "v01",
-        "topic": "sanita",
-        "difficulty": "media",
-        "text": "Quali sono i canali d'accesso attraverso i quali il cittadino può prenotare visite ed esami in Emilia-Romagna?",
-        "options": [
-            {
-                "code": "SGRT", text: "Sportelli CUP e Farmacie, Fascicolo Sanitario Elettronico, Cupweb, Call Center, App ER-Salute",
-                "correct": true
-            },
-            {
-                "code": "EQNI", text: "Sportelli CUP, Call Center e Fascicolo Sanitario Elettronico",
-                "correct": false
-            },
-            {
-                "code": "YHNY", text: "Sportelli CAAF, Call Center e Fascicolo Sanitario Elettronico",
-                "correct": false
-            },
-            {
-                "code": "KVUK", text: "Solo sportelli CAAF e Farmacie", correct: false
-            }
-        ],
-        "explanation": "Il modello di accesso regionale è multicanale per garantire la massima prossimità[cite: 8]."
-    },
-    {
-        "id": 17,
-        "prova": "v01",
-        "topic": "sanita",
-        "difficulty": "media",
-        "text": "Possono accedere al Fascicolo sanitario elettronico dell'Emilia-Romagna tutti i cittadini?",
-        "options": [
-            {
-                "code": "GZUF", text: "No, solo i cittadini che hanno scelto il proprio medico di famiglia in una AUSL dell'Emilia-Romagna",
-                "correct": false
-            },
-            {
-                "code": "TWHU", text: "No, solo i cittadini che hanno scelto il proprio medico di famiglia in Italia",
-                "correct": false
-            },
-            {
-                "code": "ZITT", text: "No, solo i cittadini residenti in Emilia-Romagna",
-                "correct": false
-            },
-            {
-                "code": "IRPF", text: "No, tutti i cittadini italiani assistiti dal Servizio Sanitario Regionale",
-                "correct": true
-            }
-        ],
-        "explanation": "Il Fascicolo Sanitario Elettronico (FSE) è disponibile per gli assistiti dal SSR dell'Emilia-Romagna[cite: 8]."
-    },
-    {
-        "id": 18,
-        "prova": "v01",
-        "topic": "sanita",
-        "difficulty": "facile",
-        "text": "Qual è la definizione estesa dell'acronimo AUSL?",
-        "options": [
-            {
-                "code": "WVXG", text: "Azienda unità sanitaria locale",
-                "correct": true
-            },
-            {
-                "code": "RLXH", text: "Azienda USL",
-                "correct": false
-            },
-            {
-                "code": "YAAY", text: "Azienda unica sanitaria legale", correct: false
-            },
-            {
-                "code": "XHCI", text: "Assistenza unitaria sociale locale", correct: false
-            }
-        ],
-        "explanation": "AUSL sta per Azienda Unità Sanitaria Locale[cite: 8]."
-    },
-    {
-        "id": 19,
-        "prova": "v01",
-        "topic": "sanita",
-        "difficulty": "media",
-        "text": "Quale tra i seguenti documenti NON viene solitamente memorizzato o consultato direttamente all'interno del Fascicolo Sanitario Elettronico (FSE)?",
-        "options": [
-            {
-                "code": "FGHJ", text: "I bilanci finanziari e contabili dell'azienda privata di erogazione",
-                "correct": true
-            },
-            {
-                "code": "VBNM", text: "I referti di laboratorio e di radiologia",
-                "correct": false
-            },
-            {
-                "code": "TYUI", text: "Le lettere di dimissione ospedaliera",
-                "correct": false
-            },
-            {
-                "code": "POIU", text: "Le prescrizioni farmaceutiche e specialistiche",
-                "correct": false
-            }
-        ],
-        "explanation": "Il FSE raccoglie la storia clinica e sanitaria del cittadino, escludendo atti amministrativi estranei alla cura medica."
-    },
-    {
-        "id": 20,
-        "prova": "v01",
-        "topic": "google",
-        "difficulty": "facile",
-        "text": "Quale tra i seguenti strumenti fa parte di Google Workspace, e per quale funzione?",
-        "options": [
-            {
-                "code": "ERTM", text: "Google Meet, per videoconferenze e incontri virtuali",
-                "correct": true
-            },
-            {
-                "code": "AHFH", text: "Google Sheets, per la creazione di documenti di testo",
-                "correct": false
-            },
-            {
-                "code": "GRAZ", text: "Skype, per comunicazioni via chat e videochiamate",
-                "correct": false
-            },
-            {
-                "code": "UTEQ", text: "Google Pictures, per il salvataggio delle immagini in cloud",
-                "correct": false
-            }
-        ],
-        "explanation": "Google Meet è l'applicazione nativa di Google Workspace dedicata alle videoconferenze e riunioni online[cite: 7]."
-    },
-    {
-        "id": 21,
-        "prova": "v01",
-        "topic": "google",
-        "difficulty": "media",
-        "text": "Cosa sono i Drive condivisi in Google Workspace?",
-        "options": [
-            {
-                "code": "OAGW", text: "Sono cartelle speciali che possono essere utilizzate per archiviare, cercare e accedere ai file con un team",
-                "correct": true
-            },
-            {
-                "code": "OLWK", text: "Sono cartelle del pc che appartengono ad un team",
-                "correct": false
-            },
-            {
-                "code": "TYPX", text: "Sono file che appartengono ad un singolo individuo ma che possono essere condivise con un team",
-                "correct": false
-            },
-            {
-                "code": "LXBR", text: "Sono file che possono contenere oltre 400.000 elementi",
-                "correct": false
-            }
-        ],
-        "explanation": "I Drive condivisi appartengono a un'organizzazione o team anziché al singolo utente[cite: 8]."
-    },
-    {
-        "id": 22,
-        "prova": "v01",
-        "topic": "google",
-        "difficulty": "facile",
-        "text": "Quale applicazione di Google Workspace viene comunemente utilizzata per creare fogli di calcolo ed elaborare tabelle numeriche?",
-        "options": [
-            {
-                "code": "GSHL", text: "Google Sheets",
-                "correct": true
-            },
-            {
-                "code": "GDOC", text: "Google Docs",
-                "correct": false
-            },
-            {
-                "code": "GSLD", text: "Google Slides",
-                "correct": false
-            },
-            {
-                "code": "GFOR", text: "Google Forms",
-                "correct": false
-            }
-        ],
-        "explanation": "Google Sheets è lo strumento di foglio elettronico della suite Google Workspace."
-    },
-    {
-        "id": 23,
-        "prova": "v02",
-        "topic": "english",
-        "difficulty": "media",
-        "text": "Complete the sentence: 'Please ___ your appointment at least 24 hours in advance.'",
-        "options": [
-            {
-                "code": "KBIO", text: "confirm",
-                "correct": true
-            },
-            {
-                "code": "LIMK", text: "confirming",
-                "correct": false
-            },
-            {
-                "code": "RPKP", text: "cost",
-                "correct": false
-            }
-        ],
-        "explanation": "Dopo 'Please' in una richiesta formale si utilizza la forma base del verbo ('confirm')[cite: 10]."
-    },
-    {
-        "id": 24,
-        "prova": "v02",
-        "topic": "english",
-        "difficulty": "media",
-        "text": "Choose the correct option: 'Why ___ to work yesterday?'",
-        "options": [
-            {
-                "code": "KOSS", text: "didn't Rose come",
-                "correct": true
-            },
-            {
-                "code": "GSBR", text: "Rose didn't come",
-                "correct": false
-            },
-            {
-                "code": "JXYM", text: "Rose hasn't came",
-                "correct": false
-            }
-        ],
-        "explanation": "Nelle frasi interrogative al passato simple si usa l'ausiliare did/didn't seguito dal soggetto e dal verbo in forma base[cite: 10]."
-    },
-    {
-        "id": 25,
-        "prova": "v02",
-        "topic": "english",
-        "difficulty": "facile",
-        "text": "Choose the word closest in meaning to 'deadline':",
-        "options": [
-            {
-                "code": "ZSSF", text: "timeframe",
-                "correct": true
-            },
-            {
-                "code": "PTKJ", text: "goal",
-                "correct": false
-            },
-            {
-                "code": "WVAY", text: "meeting",
-                "correct": false
-            }
-        ],
-        "explanation": "'Deadline' indica il termine ultimo o la scadenza temporale (timeframe)[cite: 10]."
-    },
-    {
-        "id": 26,
-        "prova": "v02",
-        "topic": "english",
-        "difficulty": "media",
-        "text": "Choose the correct option: 'I'm sorry, but the doctor is ___ at that time.'",
-        "options": [
-            {
-                "code": "RXSW", text: "unavailable",
-                "correct": true
-            },
-            {
-                "code": "AUZO", text: "unavailing",
-                "correct": false
-            },
-            {
-                "code": "KJFX", text: "unavailable for",
-                "correct": false
-            }
-        ],
-        "explanation": "Il termine corretto per indicare che un professionista non è libero in un certo orario è 'unavailable'[cite: 10]."
-    },
-    {
-        "id": 27,
-        "prova": "v02",
-        "topic": "english",
-        "difficulty": "facile",
-        "text": "Complete the sentence: 'You ___ arrive 10 minutes early for your appointment.'",
-        "options": [
-            {
-                "code": "VXSR", text: "must",
-                "correct": true
-            },
-            {
-                "code": "ZOVD", text: "mast to",
-                "correct": false
-            },
-            {
-                "code": "RNOA", text: "must be", correct: false
-            }
-        ],
-        "explanation": "I verbi modali come 'must' sono seguiti direttamente dal verbo in forma base[cite: 10]."
-    },
-    {
-        "id": 28,
-        "prova": "v02",
-        "topic": "english",
-        "difficulty": "media",
-        "text": "Complete the sentence: 'Can I please ___ my appointment to next Tuesday?'",
-        "options": [
-            {
-                "code": "RSCH", text: "reschedule",
-                "correct": true
-            },
-            {
-                "code": "CNCL", text: "cancel completely",
-                "correct": false
-            },
-            {
-                "code": "FRGT", text: "forget",
-                "correct": false
-            },
-            {
-                "code": "IGNR", text: "ignore",
-                "correct": false
-            }
-        ],
-        "explanation": "Il verbo 'reschedule' significa riprogrammare un appuntamento ad una nuova data o ora."
-    },
-    {
-        "id": 29,
-        "prova": "v01",
-        "topic": "spid",
-        "difficulty": "media",
-        "text": "Quale tra le seguenti affermazioni riguardanti la revoca o la sospensione dello SPID è corretta?",
-        "options": [
-            {
-                "code": "ZXCV", text: "L'identità digitale può essere sospesa o revocatà dal Gestore dell'Identità in caso di uso improprio o perdita dei requisiti",
-                "correct": true
-            },
-            {
-                "code": "ASDF", text: "Lo SPID non può mai essere revocato una volta emesso",
-                "correct": false
-            },
-            {
-                "code": "QWER", text: "La revoca spetta esclusivamente alla Guardia di Finanza",
-                "correct": false
-            },
-            {
-                "code": "POIU", text: "Lo SPID scade automaticamente ogni 6 mesi senza rinnovo",
-                "correct": false
-            }
-        ],
-        "explanation": "Il gestore dell'identità (Identity Provider) ha facoltà e obbligo di sospendere o revocare l'identità in presenza di usi non conformi o problemi di sicurezza."
-    },
-    {
-        "id": 30,
-        "prova": "v01",
-        "topic": "ict",
-        "difficulty": "facile",
-        "text": "A cosa serve principalmente una periferica di output come la stampante o il monitor?",
-        "options": [
-            {
-                "code": "MNBV", text: "A visualizzare o stampare elaborazioni prodotte dal computer per renderle fruibili all'utente",
-                "correct": true
-            },
-            {
-                "code": "LKJH", text: "A immettere dati grezzi all'interno del sistema",
-                "correct": false
-            },
-            {
-                "code": "POUY", text: "A memorizzare permanentemente i file di sistema",
-                "correct": false
-            },
-            {
-                "code": "TRWQ", text: "A calcolare algoritmi di crittografia",
-                "correct": false
-            }
-        ],
-        "explanation": "Le periferiche di output traducono i segnali digitali del computer in informazioni comprensibili all'essere umano (immagini, carta stampata)."
-    },
-    {
-        "id": 31,
-        "prova": "v01",
-        "topic": "gdpr",
-        "difficulty": "media",
-        "text": "Entro quale termine temporale generale il Titolare deve solitamente rispondere alle richieste di esercizio dei diritti da parte dell'interessato secondo il GDPR?",
-        "options": [
-            {
-                "code": "PLMK", text: "Un mese dal ricevimento della richiesta (prorogabile in casi complessi)",
-                "correct": true
-            },
-            {
-                "code": "QAZX", text: "Entro 24 ore lavorative tassative",
-                "correct": false
-            },
-            {
-                "code": "EDCV", text: "Entro sei mesi solari",
-                "correct": false
-            },
-            {
-                "code": "RFVB", text: "Non vi è alcun termine previsto dalla legge",
-                "correct": false
-            }
-        ],
-        "explanation": "L'articolo 12 del GDPR stabilisce il termine di un mese per riscontrare le istanze degli interessati in merito ai loro diritti privacy."
-    },
-    {
-        "id": 32,
-        "prova": "v01",
-        "topic": "sanita",
-        "difficulty": "media",
-        "text": "Nel contesto della gestione delle prenotazioni sanitarie, cosa s'intende per 'ricetta dematerializzata'?",
-        "options": [
-            {
-                "code": "HJKN", text: "La prescrizione medica digitale inviata telematicamente al Sistema Tessera Sanitaria e identificata da un NRE (Numero Requisizione Elettronica)",
-                "correct": true
-            },
-            {
-                "code": "TYUI", text: "Una ricetta scritta a mano su carta intestata del medico curante",
-                "correct": false
-            },
-            {
-                "code": "CVBN", text: "Un certificato di malattia rilasciato solo in formato cartaceo",
-                "correct": false
-            },
-            {
-                "code": "DFGH", text: "Una prenotazione eseguita telefonicamente senza prescrizione",
-                "correct": false
-            }
-        ],
-        "explanation": "La ricetta dematerializzata sostituisce il promemoria cartaceo tradizionale con un flusso informatico gestito tramite il codice NRE."
-    },
-    {
-        "id": 33,
-        "prova": "v01",
-        "topic": "google",
-        "difficulty": "facile",
-        "text": "Come vengono gestiti i permessi di visualizzazione o modifica di un documento in Google Drive?",
-        "options": [
-            {
-                "code": "LKJH", text: "Mediante condivisione mirata via email o tramite link con ruoli specifici (visualizzatore, commentatore, editore)",
-                "correct": true
-            },
-            {
-                "code": "QWER", text: "Stampando il file e distribuendolo fisicamente",
-                "correct": false
-            },
-            {
-                "code": "ZXCV", text: "Modificando l'hardware del computer",
-                "correct": false
-            },
-            {
-                "code": "ASDF", text: "I file di Google Drive non possono mai essere condivisi",
-                "correct": false
-            }
-        ],
-        "explanation": "Google Drive permette di impostare granulose autorizzazioni di accesso per collaborare in tempo reale in sicurezza."
-    },
-    {
-        "id": 34,
-        "prova": "v02",
-        "topic": "english",
-        "difficulty": "media",
-        "text": "Choose the correct phrase to respond to a customer apologizing for a delay: 'That's completely fine, ____________.'",
-        "options": [
-            {
-                "code": "NEWR", text: "don't worry about it",
-                "correct": true
-            },
-            {
-                "code": "OLDE", text: "you must apologize again",
-                "correct": false
-            },
-            {
-                "code": "BLCK", text: "this is unacceptable",
-                "correct": false
-            },
-            {
-                "code": "WHTE", text: "leave the room",
-                "correct": false
-            }
-        ],
-        "explanation": "'Don't worry about it' è la formula di cortesia ideale per rassicurare un interlocutore che si è scusato."
-    },
-    {
-        "id": 35,
-        "prova": "v02",
-        "topic": "english",
-        "difficulty": "facile",
-        "text": "What is the past participle of the irregular verb 'to write'?",
-        "options": [
-            {
-                "code": "WRTT", text: "written",
-                "correct": true
-            },
-            {
-                "code": "WRET", text: "wrote",
-                "correct": false
-            },
-            {
-                "code": "WRIT", text: "writed",
-                "correct": false
-            },
-            {
-                "code": "WRTN", text: "write",
-                "correct": false
-            }
-        ],
-        "explanation": "Il paradigma del verbo write è write - wrote - written."
+        "explanation": "Il GDPR (Regolamento UE 2016/679) tutela esclusivamente le persone fisiche."
     }
 ]
